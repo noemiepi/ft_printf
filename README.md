@@ -1,7 +1,18 @@
-*This project has been created as part of the 42 curriculum by npillet.*
+<div align="center">
+    <h1>ft_printf</h1>
+    <h3>Because ft_putnbr() and ft_putstr() aren't enough</h3>
+    <i>This project has been created as part of the 42 curriculum by npillet.</i>
+</div>
+
+## Table of Contents
+- [Description](#description)
+- [Instructions](#instructions)
+- [Conversions](#conversions)
 
 ## Description
-The goal of this project is to recreate the printf function from the C library.
+The `printf` function can be useful to debug a code or printing a sentence or parameters without returning them.
+
+Here, the goal of this project is to recreate this function from the Standard C library.
 
 ## Instructions
 To compile the files, use:
@@ -21,7 +32,7 @@ Use this one to execute the code:
 ## Conversions
 
 | Conversion | Description |
-| :---: | :--- |
+| :---: | --- |
 | `%c` | It prints a single character |
 | `%s` | It prints a string |
 | `%p` | It prints the pointer in hexadecimal format |
@@ -31,3 +42,11 @@ Use this one to execute the code:
 | `%x` | It prints a number in the lower hexadecimal alphabet |
 | `%X` | It prints a number in the upper hexadecimal alphabet |
 | `%%` | It prints a '%' |
+
+<br>
+<hr>
+<br>
+
+<div align="center">
+    <img src="assets/footer.png" />
+</div>

@@ -6,7 +6,7 @@
 #    By: npillet <npillet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/03 13:00:47 by npillet           #+#    #+#              #
-#    Updated: 2025/11/19 10:35:17 by npillet          ###   ########.fr        #
+#    Updated: 2026/06/26 21:48:52 by npillet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,21 +26,31 @@ SRC = ft_printf.c \
 		ft_printuphex.c \
 		ft_printptr.c
 
-OBJ = $(SRC:.c=.o)
 
-LIBFT_PATH = ./Libft
+OBJ_PATH = obj/
+SRC_PATH = src/
+
+SRCS = $(addprefix $(SRC_PATH), $(SRC))
+
+OBJ = $(SRC:.c=.o)
+OBJS = $(patsubst $(SRC_PATH)%.c, $(OBJ_PATH)%.o, $(SRCS))
+
+INC = -I include
+
+LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
 .PHONY: all clean fclean re libft
 
 all: $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	mkdir -p $(OBJ_PATH)
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(LIBFT) $(OBJS)
 	cp $(LIBFT) $(NAME)
-	ar rcs $(NAME) $(OBJ)
+	ar rcs $(NAME) $(OBJS)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH) all
@@ -48,7 +58,7 @@ $(LIBFT):
 
 clean:
 	make -C $(LIBFT_PATH) clean
-	rm -f $(OBJ)
+	rm -f $(OBJS)
 
 fclean: clean
 	make -C $(LIBFT_PATH) fclean
